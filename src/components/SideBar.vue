@@ -5,6 +5,7 @@
       :key="element.id"
       :to="element.link"
       :is="element.parentComponent"
+      :class="dynamicClass(element.selected)"
     >
       <component :is="element.childcomponent" :size="30" :color="'white'" />
     </component>
@@ -17,6 +18,15 @@ import UiButton from "@/components/ui/UiButton";
 export default {
   components: {
     UiButton,
+  },
+  methods: {
+    dynamicClass(element) {
+      if (element === "noSelectable") {
+        return "container-icon";
+      } else {
+        return "container-icon-selectable";
+      }
+    },
   },
   data() {
     return {
@@ -103,7 +113,7 @@ export default {
         {
           id: 11,
           name: "buttonExit",
-          parentComponent: "button",
+          parentComponent: "UiButton",
           childcomponent: "SvgExit",
           link: "/exit",
           selected: false,
@@ -120,5 +130,45 @@ export default {
   flex-direction: column;
   padding: 10px;
   gap: 10px;
+}
+
+.icon-color:hover path * {
+  fill: black;
+}
+
+.icon-color path * {
+  fill: white;
+}
+
+.container-icon-selectable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  background-color: rgba(17, 17, 29, 1);
+  gap: 10px;
+}
+
+.container-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  background-color: rgba(17, 17, 29, 1);
+  gap: 10px;
+}
+
+.container-icon-selectable:hover {
+  background-color: white;
+}
+
+.container-icon-selectable:hover svg path {
+  fill: black !important;
 }
 </style>
