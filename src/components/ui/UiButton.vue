@@ -1,5 +1,5 @@
 <template>
-  <button class="ui-button">
+  <button class="ui-button" @click="toggleSidebar">
     <slot></slot>
   </button>
 </template>
@@ -7,6 +7,11 @@
 <script>
 export default {
   props: ["id", "nameComponent", "selected", "action"],
+  methods: {
+    toggleSidebar() {
+      this.$store.dispatch(this.action);
+    },
+  },
 };
 </script>
 
