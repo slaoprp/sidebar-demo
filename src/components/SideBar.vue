@@ -23,7 +23,7 @@
         :action="element.action"
       >
         <component :is="element.childcomponent" :size="30" :color="'white'" />
-        <transition name="fade" mode="out-in">
+        <transition name="fade" mode="in-out">
           <span v-if="sidebarIsActive" class="title-nav">
             {{ element.name }}
           </span>
@@ -223,14 +223,21 @@ a {
 .title-nav {
   position: absolute;
   left: 60px;
+  opacity: 1;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter-to,
-.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-leave-to,
+.fade-enter-from {
   opacity: 0;
 }
 </style>
