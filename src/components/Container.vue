@@ -1,14 +1,10 @@
 <template>
   <main class="container">
-    <transition>
-      <div
-        :class="
-          sidebarIsActive ? 'sidebar-container-xl' : 'sidebar-container-xs'
-        "
-      >
-        <slot name="sidebar"></slot>
-      </div>
-    </transition>
+    <div
+      :class="sidebarIsActive ? 'sidebar-container-xl' : 'sidebar-container-xs'"
+    >
+      <slot name="sidebar"></slot>
+    </div>
     <div class="view-container">
       <slot name="view"></slot>
     </div>
